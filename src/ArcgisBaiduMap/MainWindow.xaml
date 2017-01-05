@@ -1,0 +1,50 @@
+﻿<Window x:Class="ArcgisBaiduMap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArcgisBaiduMap"
+        xmlns:esri="http://schemas.esri.com/arcgis/client/2009"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="59*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <RadioButton x:Name="radioButton" GroupName="MapType" IsChecked="True" Checked="RadioButton_OnChecked" Content="WMS" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="radioButton1" GroupName="MapType" Content="WMTS"  Checked="RadioButton_OnChecked"  HorizontalAlignment="Left" Margin="117,10,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <!--Extent="15419569.325886,2650360.74321756,15550956.0089383,2733031.0156999"-->
+            <!--<esri:Map x:Name="MyMap" Loaded="MyMap_Loaded" Extent="-20037508.3427892, -20037508.3427892, 20037508.3427892, 20037508.3427892">-->
+            <esri:Map x:Name="MyMap" Loaded="MyMap_Loaded" MouseClick="MyMap_OnMouseClick">
+                <!--<local:BaiduTileLayer></local:BaiduTileLayer>-->
+                <!--<esri:ArcGISTiledMapServiceLayer Url="http://cache1.arcgisonline.cn/arcgis/rest/services/ChinaOnlineCommunity/MapServer" />-->
+                <!--<esri:WmtsLayer x:Name="TiledLayer"
+                                        Layer="floor1"
+                                        Url="http://10.192.165.160:8079/geoserver/gwc/service/wmts" />
+                                <esri:WmtsLayer x:Name="TiledLayer"
+                                        Layer="ArcgisServerShangHai"
+                                        Url="http://10.192.164.251:8090/geowebcache/service/wmts" />-->
+                <!--<esri:ArcGISDynamicMapServiceLayer Url="http://10.192.165.160:6080/arcgis/rest/services/Xingqudian2/MapServer"></esri:ArcGISDynamicMapServiceLayer>
+                                <esri:ArcGISDynamicMapServiceLayer x:Name="c" Url="http://10.192.165.160:6080/arcgis/rest/services/XingqudianCN/MapServer" />-->
+                <!--<esri:GraphicsLayer x:Name="SelectGraphicsLayer" ID="SelectGraphicsLayer" />-->
+
+                <!--<esri:GraphicsLayer ID="MyGraphicsLayer" MouseLeftButtonUp="GraphicsLayer_MouseLeftButtonUp" />-->
+                <i:Interaction.Behaviors>
+                    <esri:ShowCoordinatesBehavior FormatString="{}{0:0.0000000000} , {1:0.0000000000}" />
+                </i:Interaction.Behaviors>
+
+            </esri:Map>
+            <esri:Navigation Margin="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Map="{Binding ElementName=MyMap}" />
+        </Grid>
+    </Grid>
+</Window>
